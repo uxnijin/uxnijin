@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UXNijin - My Thoughts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'media' }</script>
+    <link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .font-tanker { font-family: 'Tanker', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .menu-button, .menu-item, .blog-item { transition: all 0.3s ease; }
+        .menu-button:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
+        .menu-button:hover .menu-text { color: white; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 50; display: none; flex-direction: column; justify-content: space-between; align-items: center; }
+        @media (prefers-color-scheme: dark) { .menu-overlay { background-color: black; } }
+        .content-item { opacity: 0; transform: translateY(30px); animation: slideUpFadeIn 0.6s ease-out forwards; }
+        #blog-container .content-item:nth-child(1) { animation-delay: 0.1s; }
+        #blog-container .content-item:nth-child(2) { animation-delay: 0.2s; }
+        #blog-container .content-item:nth-child(3) { animation-delay: 0.3s; }
+        #blog-container .content-item:nth-child(4) { animation-delay: 0.4s; }
+        #blog-container .content-item:nth-child(5) { animation-delay: 0.5s; }
+        #blog-container .content-item:nth-child(6) { animation-delay: 0.6s; }
+        @keyframes slideUpFadeIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .menu-item-home:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
+        .menu-item-mycreation:hover { background-color: #FF3F4C; box-shadow: 5px 5px 0px #97242C; }
+        .menu-item-mydesignworks:hover { background-color: #2D8FFF; box-shadow: 5px 5px 0px #194F8D; }
+        .menu-item-myexperience:hover { background-color: #E372FF; box-shadow: 5px 5px 0px #773A87; }
+        .menu-item-mythoughts:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; }
+        .menu-item-sayhello:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
+        .menu-item:hover .menu-text { color: white; }
+        .blog-item:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; cursor: pointer; }
+        .blog-item:hover .title-text { color: white; }
+        .blog-item:hover .description-text, .blog-item:hover .read-time { color: rgba(255, 255, 255, 0.5); }
+        .article-description { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+        @media (max-width: 768px) { .blog-item { height: auto; min-height: 81px; } .blog-item > div { min-height: 73px; } .article-description { display: none; } }
+    </style>
+</head>
+<body class="bg-white dark:bg-black min-h-screen flex flex-col">
+    <!-- Audio Elements -->
+    <audio id="clickSound" src="assets/audio/click.mp3" preload="auto"></audio>
+    <audio id="backgroundNoise" src="assets/audio/background-noise.mp3" preload="auto" loop></audio>
+    <audio id="transitionSound" src="assets/audio/transition.mp3" preload="auto"></audio>
+
+    <header class="w-full px-4 md:px-9 pt-4 md:pt-9">
+        <div class="flex justify-between items-center h-12">
+            <div class="text-orange-400 text-2xl font-tanker">My thoughts</div>
+            <div id="menuButton" class="menu-button w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                <div class="menu-text text-black dark:text-white text-2xl font-tanker">Menu</div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow flex flex-col px-4 md:px-9 py-4 md:py-9">
+        <div class="w-full max-w-[800px] mx-auto flex flex-col items-start gap-6">
+            <div id="blog-container" class="w-full flex flex-col items-start gap-6">
+                <div class="text-black dark:text-white text-sm font-medium font-inter">Loading articles...</div>
+            </div>
+        </main>
+    </main>
+    <div id="menuOverlay" class="menu-overlay">
+        <div class="w-full px-4 md:px-9 pt-4 md:pt-9">
+            <div class="flex justify-between items-center h-12">
+                <div class="text-indigo-400 text-2xl font-tanker">UXNIJIN</div>
+                <div id="closeMenuButton" class="menu-button w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                    <div class="menu-text text-black dark:text-white text-2xl font-tanker">Close</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-4 md:px-9 flex-grow flex justify-center items-center">
+            <div class="w-full max-w-[800px] flex flex-col justify-center items-center gap-4">
+                <a href="home.html" class="menu-item menu-item-home w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-indigo-400 text-2xl font-tanker">Home</div></a>
+                <a href="mycreation.html" class="menu-item menu-item-mycreation w-[130px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-red-500 text-2xl font-tanker">My creation</div></a>
+                <a href="mydesignworks.html" class="menu-item menu-item-mydesignworks w-[175px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-blue-500 text-2xl font-tanker">My design works</div></a>
+                <a href="myexperience.html" class="menu-item menu-item-myexperience w-[150px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-purple-400 text-2xl font-tanker">my Experience</div></a>
+                <a href="mythoughts.html" class="menu-item menu-item-mythoughts w-[137px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-orange-400 text-2xl font-tanker">my thoughts</div></a>
+                <a href="sayhello.html" class="menu-item menu-item-sayhello w-[107px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-green-500 text-2xl font-tanker">say hello</div></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Audio elements
+            const clickSound = document.getElementById('clickSound');
+            const backgroundNoise = document.getElementById('backgroundNoise');
+            const transitionSound = document.getElementById('transitionSound');
+
+            // Play background noise on page load
+            backgroundNoise.volume = 0.1; // Low volume for subtlety
+            backgroundNoise.play().catch(err => console.log("Background noise blocked:", err));
+
+            // Menu toggle with click sound
+            const menuToggle = (show) => {
+                document.getElementById('menuOverlay').style.display = show ? 'flex' : 'none';
+                if (show) clickSound.play(); // Play click sound when opening menu
+            };
+            document.getElementById('menuButton').addEventListener('click', () => menuToggle(true));
+            document.getElementById('closeMenuButton').addEventListener('click', () => {
+                menuToggle(false);
+                clickSound.play(); // Play click sound when closing menu
+            });
+
+            // Add click sound to all clickable elements
+            const clickableElements = document.querySelectorAll('a, button');
+            clickableElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    clickSound.currentTime = 0; // Reset to start
+                    clickSound.play();
+                });
+            });
+
+            // Play transition sound on page navigation
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href !== '#' && !href.startsWith('http')) { // Internal links only
+                        e.preventDefault();
+                        transitionSound.play();
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 300); // Delay matches transition sound length (adjust as needed)
+                    }
+                });
+            });
+
+            // Existing Medium fetch logic
+            try {
+                const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@nijinmuhammed');
+                const data = await response.json();
+                const container = document.getElementById('blog-container');
+                container.innerHTML = '';
+                data.items.forEach(item => {
+                    const thumbnail = (item.content.match(/<img[^>]+src=["'](.*?)["']/i)?.[1]) || '/api/placeholder/180/100';
+                    const wordCount = item.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+                    const readTime = Math.max(1, Math.ceil(wordCount / 200));
+                    const description = item.content.replace(/<[^>]*>/g, '').trim().slice(0, 160) + '...';
+                    const blogItem = document.createElement('div');
+                    blogItem.className = 'content-item blog-item w-full p-2 rounded-2xl flex justify-center items-start gap-4';
+                    blogItem.innerHTML = `
+                        <img class="w-[124px] md:w-[180px] h-[73px] md:h-[100px] rounded-xl object-cover" src="${thumbnail}" alt="Article thumbnail" onerror="this.src='/api/placeholder/180/100'"/>
+                        <div class="flex-1 h-full flex flex-col justify-between items-start">
+                            <div class="title-text w-full md:w-[580px] text-black dark:text-white text-sm font-medium font-inter">${item.title}</div>
+                            <div class="description-text article-description w-full md:w-[580px] mt-1 text-black dark:text-white text-opacity-50 dark:text-opacity-70 text-xs font-normal font-inter">${description}</div>
+                            <div class="read-time w-full md:w-[580px] text-black text-opacity-40 dark:text-white dark:text-opacity-40 text-xs font-normal font-inter mt-1">${readTime} min read</div>
+                        </div>`;
+                    blogItem.addEventListener('click', () => window.open(item.link, '_blank'));
+                    container.appendChild(blogItem);
+                });
+            } catch (error) {
+                document.getElementById('blog-container').innerHTML = '<div class="text-black dark:text-white text-sm font-medium font-inter">Failed to load articles. Please try again later.</div>';
+            }
+        });
+    </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c1f9790e96538a',t:'MTc0MTI2NTM4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
