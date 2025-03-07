@@ -44,6 +44,8 @@
         .skeleton-text { width: 60%; height: 12px; border-radius: 4px; }
         .skeleton-subtext { width: 40%; height: 10px; border-radius: 4px; }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        /* Hide skeleton after load */
+        .loaded .skeleton { display: none; }
     </style>
 </head>
 <body class="bg-white dark:bg-black min-h-screen flex flex-col">
@@ -190,25 +192,27 @@
             };
 
             const renderExperience = (items, container) => {
-                container.innerHTML = '';
-                
-                // Render cards in the same order regardless of screen size
-                // The grid layout will handle the wrapping (2 columns on desktop, 1 on mobile)
-                items.forEach(item => {
-                    container.appendChild(createCard(item));
-                });
+                // Only render if not already loaded
+                if (!container.classList.contains('loaded')) {
+                    container.innerHTML = ''; // Clear skeleton
+                    container.classList.add('loaded'); // Mark as loaded
+                    items.forEach(item => {
+                        container.appendChild(createCard(item));
+                    });
+                }
             };
 
-            // Handle window resize to ensure proper layout
-            window.addEventListener('resize', () => {
-                if (workExperience) renderExperience(workExperience, workList);
-                if (education) renderExperience(education, eduList);
-            });
-
-            // Initial render
+            // Initial render only on page load
             if (workExperience) renderExperience(workExperience, workList);
             if (education) renderExperience(education, eduList);
+
+            // Remove resize event listener to prevent re-rendering
+            // window.addEventListener('resize', () => {
+            //     if (workExperience) renderExperience(workExperience, workList);
+            //     if (education) renderExperience(education, eduList);
+            // });
         });
     </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c718e9493e673f',t:'MTc0MTMxOTA5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
