@@ -11,19 +11,21 @@
     <style>
         .font-tanker { font-family: 'Tanker', sans-serif; }
         .font-inter { font-family: 'Inter', sans-serif; }
-        .menu-button, .menu-item, .back-button { transition: all 0.3s ease; }
+        .menu-button, .menu-item, .experience-item { transition: all 0.3s ease; }
         .menu-button:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
         .menu-button:hover .menu-text { color: white; }
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 50; display: none; flex-direction: column; justify-content: space-between; align-items: center; }
-        .back-button { background-color: #E372FF; }
-        .back-button:hover { box-shadow: 5px 5px 0px #773A87; }
         @media (prefers-color-scheme: dark) { 
             .menu-overlay { background-color: black; }
+            .experience-item { background-color: #1a1a1a; }
+            .skeleton { background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%); }
         }
         .content-item { opacity: 0; transform: translateY(30px); animation: slideUpFadeIn 0.6s ease-out forwards; }
         .content-item:nth-child(1) { animation-delay: 0.1s; }
         .content-item:nth-child(2) { animation-delay: 0.2s; }
         .content-item:nth-child(3) { animation-delay: 0.3s; }
+        .content-item:nth-child(4) { animation-delay: 0.4s; }
+        .content-item:nth-child(5) { animation-delay: 0.5s; }
         @keyframes slideUpFadeIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
         .menu-item-home:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
         .menu-item-mycreation:hover { background-color: #FF3F4C; box-shadow: 5px 5px 0px #97242C; }
@@ -32,6 +34,16 @@
         .menu-item-mythoughts:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; }
         .menu-item-sayhello:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
         .menu-item:hover .menu-text { color: white; }
+        .experience-item { cursor: pointer; }
+        .experience-item:hover { background-color: #E372FF; box-shadow: 5px 5px 0px #773A87; }
+        .experience-item:hover .exp-title, .experience-item:hover .exp-date, .experience-item:hover .exp-status { color: white; }
+        .experience-image { width: 100%; height: 144px; object-fit: cover; }
+        /* Skeleton Loader */
+        .skeleton { background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        .skeleton-image { width: 100%; height: 144px; border-radius: 12px; }
+        .skeleton-text { width: 60%; height: 12px; border-radius: 4px; }
+        .skeleton-subtext { width: 40%; height: 10px; border-radius: 4px; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
     </style>
 </head>
 <body class="bg-white dark:bg-black min-h-screen flex flex-col">
@@ -49,38 +61,38 @@
         </div>
     </header>
     <main class="flex-grow flex justify-center items-center px-4 md:px-9 py-4 md:py-9">
-        <div class="w-full max-w-[800px] flex flex-col justify-center items-center gap-4 md:gap-2.5">
-            <div class="content-item self-stretch p-4 bg-white dark:bg-black rounded-2xl border border-black/10 dark:border-white/15 flex flex-col justify-start items-start gap-6">
-                <div class="relative justify-start text-purple-400 text-lg font-normal font-tanker">Work Experience</div>
-                <div class="self-stretch flex flex-col justify-start items-start gap-1">
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Qmark Technolabs</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Apr 2024 - Oct 2024</div>
-                    </div>
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Tinkerhub Organization</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Sep 2023 - Jun 2024</div>
-                    </div>
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Tinkerhub Organization</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Sep 2023 - Jun 2024</div>
+        <div class="w-full max-w-[800px] flex flex-col justify-start items-start gap-8">
+            <div id="work-experience" class="w-full flex flex-col justify-start items-start gap-6">
+                <div class="text-purple-400 text-lg font-normal font-tanker">Work Experience</div>
+                <div id="work-experience-list" class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
+                    <!-- Skeleton Loader -->
+                    <div class="skeleton w-full h-52 p-2 bg-neutral-100 rounded-2xl flex flex-col justify-start items-start gap-2">
+                        <div class="skeleton-image w-full"></div>
+                        <div class="self-stretch inline-flex justify-between items-end w-full">
+                            <div class="inline-flex flex-col justify-start items-start gap-2">
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-subtext"></div>
+                            </div>
+                            <div class="flex justify-start items-center gap-1">
+                                <div class="w-2 h-2 skeleton rounded-full"></div>
+                                <div class="skeleton-subtext w-8"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="content-item self-stretch p-4 bg-white dark:bg-black rounded-2xl border border-black/10 dark:border-white/15 flex flex-col justify-start items-start gap-6">
-                <div class="relative justify-start text-purple-400 text-lg font-normal font-tanker">Education</div>
-                <div class="self-stretch flex flex-col justify-start items-start gap-1">
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Qmark Technolabs</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Apr 2024 - Oct 2024</div>
-                    </div>
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Tinkerhub Organization</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Sep 2023 - Jun 2024</div>
-                    </div>
-                    <div class="self-stretch flex flex-col justify-center items-start">
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Designer at Tinkerhub Organization</div>
-                        <div class="relative justify-start text-black dark:text-white text-sm font-medium font-inter leading-7">Sep 2023 - Jun 2024</div>
+            <div id="education" class="w-full flex flex-col justify-start items-start gap-6">
+                <div class="text-purple-400 text-lg font-normal font-tanker">Education</div>
+                <div id="education-list" class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
+                    <!-- Skeleton Loader -->
+                    <div class="skeleton w-full h-52 p-2 bg-neutral-100 rounded-2xl flex flex-col justify-start items-start gap-2">
+                        <div class="skeleton-image w-full"></div>
+                        <div class="self-stretch inline-flex justify-between items-end w-full">
+                            <div class="inline-flex flex-col justify-start items-start gap-2">
+                                <div class="skeleton-text"></div>
+                                <div class="skeleton-subtext"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,53 +119,96 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Audio elements
             const clickSound = document.getElementById('clickSound');
             const backgroundNoise = document.getElementById('backgroundNoise');
             const transitionSound = document.getElementById('transitionSound');
 
-            // Play background noise on page load
-            backgroundNoise.volume = 0.1; // Low volume for subtlety
+            backgroundNoise.volume = 0.1;
             backgroundNoise.play().catch(err => console.log("Background noise blocked:", err));
 
-            // Menu toggle with click sound
             const menuToggle = (show) => {
                 document.getElementById('menuOverlay').style.display = show ? 'flex' : 'none';
-                if (show) clickSound.play(); // Play click sound when opening menu
+                if (show) clickSound.play();
             };
             document.getElementById('menuButton').addEventListener('click', () => menuToggle(true));
             document.getElementById('closeMenuButton').addEventListener('click', () => {
                 menuToggle(false);
-                clickSound.play(); // Play click sound when closing menu
+                clickSound.play();
             });
 
-            // Add click sound to all clickable elements
             const clickableElements = document.querySelectorAll('a, button');
             clickableElements.forEach(el => {
                 el.addEventListener('click', () => {
-                    clickSound.currentTime = 0; // Reset to start
+                    clickSound.currentTime = 0;
                     clickSound.play();
                 });
             });
 
-            // Play transition sound on page navigation
             document.querySelectorAll('a[href]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     const href = link.getAttribute('href');
-                    if (href && href !== '#' && !href.startsWith('http')) { // Internal links only
+                    if (href && href !== '#' && !href.startsWith('http')) {
                         e.preventDefault();
                         transitionSound.play();
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 300); // Delay matches transition sound length (adjust as needed)
+                        setTimeout(() => window.location.href = href, 300);
                     }
                 });
             });
+
+            // Dynamic Content Loading
+            const workList = document.getElementById('work-experience-list');
+            const eduList = document.getElementById('education-list');
+            
+            const createCard = (item) => {
+                const card = document.createElement('div');
+                card.className = 'content-item experience-item w-full h-52 p-2 bg-neutral-100 dark:bg-[#1a1a1a] rounded-2xl flex flex-col justify-start items-start gap-2';
+                card.innerHTML = `
+                    <img class="experience-image rounded-xl" src="assets/${item.image}" alt="${item.title}" onerror="this.src='https://placehold.co/345x144'">
+                    <div class="self-stretch inline-flex justify-between items-end w-full">
+                        <div class="inline-flex flex-col justify-start items-start gap-2">
+                            <div class="exp-title relative justify-start text-black dark:text-white text-xs font-medium font-inter">${item.title}</div>
+                            <div class="exp-date relative justify-start text-black/50 dark:text-white/50 text-xs font-medium font-inter">${item.date}</div>
+                        </div>
+                        ${item.live ? `
+                            <div class="flex justify-start items-center gap-1">
+                                <div class="w-2 h-2 relative bg-green-500 rounded-full"></div>
+                                <div class="exp-status relative justify-start text-black/50 dark:text-white/50 text-[10px] font-medium font-inter">Live</div>
+                            </div>` : ''}
+                    </div>`;
+                card.addEventListener('click', () => {
+                    clickSound.currentTime = 0;
+                    clickSound.play();
+                    if (item.link) {
+                        transitionSound.play();
+                        setTimeout(() => window.open(item.link, '_blank'), 300);
+                    }
+                });
+                return card;
+            };
+
+            const renderExperience = (items, container) => {
+                container.innerHTML = '';
+                
+                // Render cards in the same order regardless of screen size
+                // The grid layout will handle the wrapping (2 columns on desktop, 1 on mobile)
+                items.forEach(item => {
+                    container.appendChild(createCard(item));
+                });
+            };
+
+            // Handle window resize to ensure proper layout
+            window.addEventListener('resize', () => {
+                if (workExperience) renderExperience(workExperience, workList);
+                if (education) renderExperience(education, eduList);
+            });
+
+            // Initial render
+            if (workExperience) renderExperience(workExperience, workList);
+            if (education) renderExperience(education, eduList);
         });
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c1f9790c5db0bd',t:'MTc0MTI2NTM4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c6760bc8e7b066',t:'MTc0MTMxMjQyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
