@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Nijin, a UI/UX Designer, through this form.">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="UXNijin - Say Hello">
+    <meta property="og:description" content="Get in touch with Nijin, a UI/UX Designer, through this contact form or social links.">
+    <meta property="og:image" content="https://yourdomain.com/assets/preview-sayhello.jpg">
+    <meta property="og:url" content="https://yourdomain.com/sayhello.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UXNijin">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UXNijin - Say Hello">
+    <meta name="twitter:description" content="Get in touch with Nijin, a UI/UX Designer, through this contact form or social links.">
+    <meta name="twitter:image" content="https://yourdomain.com/assets/preview-sayhello.jpg">
+    <meta name="twitter:site" content="@MuhammedNijin">
     <title>UXNijin - Say Hello</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'media' }</script>
@@ -12,23 +25,42 @@
     <style>
         .font-tanker { font-family: 'Tanker', sans-serif; }
         .font-inter { font-family: 'Inter', sans-serif; }
-        .menu-button, .menu-item, .submit-button, .social-link { transition: all 0.3s ease; }
+        .transition-all { transition: all 0.3s ease; }
         .menu-button:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
         .menu-button:hover .menu-text { color: white; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 50; display: none; flex-direction: column; justify-content: space-between; align-items: center; }
+        .menu-overlay { 
+            position: fixed; 
+            inset: 0; 
+            background-color: white; 
+            z-index: 50; 
+            display: none; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
         .submit-button { background-color: #27BE4A; }
         .submit-button:hover { box-shadow: 5px 5px 0px #006D19; }
         .social-link { background-color: #DBDBDB; }
         .social-link:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
         .social-link:hover .social-text { color: white; }
-        @media (prefers-color-scheme: dark) { .menu-overlay { background-color: black; } .social-link { background-color: #4B4B4B; } }
-        .content-item { opacity: 0; transform: translateY(30px); animation: slideUpFadeIn 0.6s ease-out forwards; }
+        @media (prefers-color-scheme: dark) { 
+            .menu-overlay { background-color: black; } 
+            .social-link { background-color: #4B4B4B; } 
+        }
+        .content-item { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: slideUpFadeIn 0.6s ease-out forwards; 
+        }
         .content-item:nth-child(1) { animation-delay: 0.1s; }
         .content-item:nth-child(2) { animation-delay: 0.2s; }
         .content-item:nth-child(3) { animation-delay: 0.3s; }
         .content-item:nth-child(4) { animation-delay: 0.4s; }
         .content-item:nth-child(5) { animation-delay: 0.5s; }
-        @keyframes slideUpFadeIn { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUpFadeIn { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         .menu-item-home:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
         .menu-item-mycreation:hover { background-color: #FF3F4C; box-shadow: 5px 5px 0px #97242C; }
         .menu-item-mydesignworks:hover { background-color: #2D8FFF; box-shadow: 5px 5px 0px #194F8D; }
@@ -36,19 +68,18 @@
         .menu-item-mythoughts:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; }
         .menu-item-sayhello:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
         .menu-item:hover .menu-text { color: white; }
-        @media (max-width: 768px) { .form-container { width: 100%; max-width: 361px; } .social-links { flex-direction: column; gap: 1rem; } .social-link { width: 100%; } }
+        @media (max-width: 768px) { 
+            .form-container { width: 100%; max-width: 361px; } 
+            .social-links { flex-direction: column; gap: 1rem; } 
+            .social-link { width: 100%; } 
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-black min-h-screen flex flex-col">
-    <!-- Audio Elements -->
-    <audio id="clickSound" src="assets/audio/click.mp3" preload="auto"></audio>
-    <audio id="backgroundNoise" src="assets/audio/background-noise.mp3" preload="auto" loop></audio>
-    <audio id="transitionSound" src="assets/audio/transition.mp3" preload="auto"></audio>
-
     <div class="w-full px-4 md:px-9 py-4 md:py-9 flex flex-col justify-between items-center">
         <header class="w-full flex justify-between items-center h-12">
             <div class="text-green-500 text-2xl font-tanker">say hello</div>
-            <div id="menuButton" class="menu-button w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+            <div id="menuButton" class="menu-button transition-all w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
                 <div class="menu-text text-black dark:text-white text-2xl font-tanker">Menu</div>
             </div>
         </header>
@@ -68,21 +99,21 @@
                             <label class="text-black dark:text-white text-base font-inter opacity-75">Message</label>
                             <textarea name="entry.75164446" placeholder="What you want to say" rows="4" required class="w-full px-4 py-3 border border-black border-opacity-10 dark:border-white dark:border-opacity-20 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 text-black dark:text-white dark:bg-black text-base font-inter placeholder-black placeholder-opacity-25 dark:placeholder-white dark:placeholder-opacity-50"></textarea>
                         </div>
-                        <button type="submit" class="content-item submit-button w-full px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                        <button type="submit" class="content-item submit-button transition-all w-full px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
                             <div class="text-white text-2xl font-tanker">Submit</div>
                         </button>
                     </form>
                     <div class="content-item social-links w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <a href="https://www.instagram.com/uxnijin/" target="_blank" class="social-link w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Instagram</div></a>
-                        <a href="https://x.com/MuhammedNijin" target="_blank" class="social-link w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">X</div></a>
-                        <a href="https://www.threads.net/@uxnijin" target="_blank" class="social-link w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Threads</div></a>
-                        <a href="https://medium.com/@nijinmuhammed" target="_blank" class="social-link w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Medium</div></a>
-                        <a href="/cdn-cgi/l/email-protection#d6b8bfbcbfb8bba3beb7bbbbb3b296b3aeb7bba6bab3f8b5b9bb" class="social-link w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer sm:col-span-2"><div class="social-text text-black dark:text-white text-2xl font-tanker">Email</div></a>
+                        <a href="https://www.instagram.com/uxnijin/" target="_blank" class="social-link transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Instagram</div></a>
+                        <a href="https://x.com/MuhammedNijin" target="_blank" class="social-link transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">X</div></a>
+                        <a href="https://www.threads.net/@uxnijin" target="_blank" class="social-link transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Threads</div></a>
+                        <a href="https://medium.com/@nijinmuhammed" target="_blank" class="social-link transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="social-text text-black dark:text-white text-2xl font-tanker">Medium</div></a>
+                        <a href="/cdn-cgi/l/email-protection#d6b8bfbcbfb8bba3beb7bbbbb3b296b3aeb7bba6bab3f8b5b9bb" class="social-link transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer sm:col-span-2"><div class="social-text text-black dark:text-white text-2xl font-tanker">Email</div></a>
                     </div>
                 </div>
                 <div id="thank-you-message" class="hidden w-full md:w-[361px] flex flex-col items-center gap-6">
                     <p class="text-black dark:text-white text-lg font-medium font-tanker text-center">Thank you for your response</p>
-                    <a href="home.html" class="submit-button w-36 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="text-white text-2xl font-tanker">Back to home</div></a>
+                    <a href="home.html" class="submit-button transition-all w-36 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="text-white text-2xl font-tanker">Back to home</div></a>
                 </div>
             </div>
         </main>
@@ -91,69 +122,31 @@
         <div class="w-full px-4 md:px-9 pt-4 md:pt-9">
             <div class="flex justify-between items-center h-12">
                 <div class="text-indigo-400 text-2xl font-tanker">UXNIJIN</div>
-                <div id="closeMenuButton" class="menu-button w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                <div id="closeMenuButton" class="menu-button transition-all w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
                     <div class="menu-text text-black dark:text-white text-2xl font-tanker">Close</div>
                 </div>
             </div>
         </div>
         <div class="w-full px-4 md:px-9 flex-grow flex justify-center items-center">
             <div class="w-full max-w-[800px] flex flex-col justify-center items-center gap-4">
-                <a href="home.html" class="menu-item menu-item-home w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-indigo-400 text-2xl font-tanker">Home</div></a>
-                <a href="mycreation.html" class="menu-item menu-item-mycreation w-[130px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-red-500 text-2xl font-tanker">My creation</div></a>
-                <a href="mydesignworks.html" class="menu-item menu-item-mydesignworks w-[175px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-blue-500 text-2xl font-tanker">My design works</div></a>
-                <a href="myexperience.html" class="menu-item menu-item-myexperience w-[150px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-purple-400 text-2xl font-tanker">my Experience</div></a>
-                <a href="mythoughts.html" class="menu-item menu-item-mythoughts w-[137px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-orange-400 text-2xl font-tanker">my thoughts</div></a>
-                <a href="sayhello.html" class="menu-item menu-item-sayhello w-[107px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-green-500 text-2xl font-tanker">say hello</div></a>
+                <a href="home.html" class="menu-item menu-item-home transition-all w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-indigo-400 text-2xl font-tanker">Home</div></a>
+                <a href="mycreation.html" class="menu-item menu-item-mycreation transition-all w-[130px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-red-500 text-2xl font-tanker">My creation</div></a>
+                <a href="mydesignworks.html" class="menu-item menu-item-mydesignworks transition-all w-[175px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-blue-500 text-2xl font-tanker">My design works</div></a>
+                <a href="myexperience.html" class="menu-item menu-item-myexperience transition-all w-[150px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-purple-400 text-2xl font-tanker">my Experience</div></a>
+                <a href="mythoughts.html" class="menu-item menu-item-mythoughts transition-all w-[137px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-orange-400 text-2xl font-tanker">my thoughts</div></a>
+                <a href="sayhello.html" class="menu-item menu-item-sayhello transition-all w-[107px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer"><div class="menu-text text-green-500 text-2xl font-tanker">say hello</div></a>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Audio elements
-            const clickSound = document.getElementById('clickSound');
-            const backgroundNoise = document.getElementById('backgroundNoise');
-            const transitionSound = document.getElementById('transitionSound');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const toggleMenu = (show) => menuOverlay.style.display = show ? 'flex' : 'none';
+            
+            document.getElementById('menuButton').addEventListener('click', () => toggleMenu(true));
+            document.getElementById('closeMenuButton').addEventListener('click', () => toggleMenu(false));
 
-            // Play background noise on page load
-            backgroundNoise.volume = 0.1; // Low volume for subtlety
-            backgroundNoise.play().catch(err => console.log("Background noise blocked:", err));
-
-            // Menu toggle with click sound
-            const menuToggle = (show) => {
-                document.getElementById('menuOverlay').style.display = show ? 'flex' : 'none';
-                if (show) clickSound.play(); // Play click sound when opening menu
-            };
-            document.getElementById('menuButton').addEventListener('click', () => menuToggle(true));
-            document.getElementById('closeMenuButton').addEventListener('click', () => {
-                menuToggle(false);
-                clickSound.play(); // Play click sound when closing menu
-            });
-
-            // Add click sound to all clickable elements
-            const clickableElements = document.querySelectorAll('a, button');
-            clickableElements.forEach(el => {
-                el.addEventListener('click', () => {
-                    clickSound.currentTime = 0; // Reset to start
-                    clickSound.play();
-                });
-            });
-
-            // Play transition sound on page navigation
-            document.querySelectorAll('a[href]').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const href = link.getAttribute('href');
-                    if (href && href !== '#' && !href.startsWith('http')) { // Internal links only
-                        e.preventDefault();
-                        transitionSound.play();
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 300); // Delay matches transition sound length (adjust as needed)
-                    }
-                });
-            });
-
-            // Existing form submission logic
             document.getElementById('contact-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const form = e.target;
@@ -170,6 +163,5 @@
         });
     </script>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91c1f9790d04180f',t:'MTc0MTI2NTM4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
