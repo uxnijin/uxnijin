@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Works by Nijin, a Product Designer showcasing Dribbble shots.">
+    <meta name="description" content="Works by Nijin, a Product Designer showcasing design projects.">
     <!-- Open Graph Tags -->
     <meta property="og:title" content="uxnijin - My Design Works">
-    <meta property="og:description" content="Discover design works by Nijin, showcased through stunning Dribbble shots.">
+    <meta property="og:description" content="Discover design works by Nijin, showcased with thumbnails and details.">
     <meta property="og:image" content="https://uxnijin.com/assets/designs.png">
     <meta property="og:url" content="https://uxnijin.com/mydesignworks.html">
     <meta property="og:type" content="website">
@@ -14,7 +14,7 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="uxnijin - My Design Works">
-    <meta name="twitter:description" content="Discover design works by Nijin, showcased through stunning Dribbble shots.">
+    <meta name="twitter:description" content="Discover design works by Nijin, showcased with thumbnails and details.">
     <meta name="twitter:image" content="https://uxnijin.com/assets/designs.png">
     <meta name="twitter:site" content="@uxnijin">
     <title>My Design Work - uxnijin</title>
@@ -48,12 +48,12 @@
             transform: translateY(30px); 
             animation: slideUpFadeIn 0.6s ease-out forwards; 
         }
-        .works-container .content-item:nth-child(1) { animation-delay: 0.1s; }
-        .works-container .content-item:nth-child(2) { animation-delay: 0.2s; }
-        .works-container .content-item:nth-child(3) { animation-delay: 0.3s; }
-        .works-container .content-item:nth-child(4) { animation-delay: 0.4s; }
-        .works-container .content-item:nth-child(5) { animation-delay: 0.5s; }
-        .works-container .content-item:nth-child(6) { animation-delay: 0.6s; }
+        .works-grid .content-item:nth-child(1) { animation-delay: 0.1s; }
+        .works-grid .content-item:nth-child(2) { animation-delay: 0.2s; }
+        .works-grid .content-item:nth-child(3) { animation-delay: 0.3s; }
+        .works-grid .content-item:nth-child(4) { animation-delay: 0.4s; }
+        .works-grid .content-item:nth-child(5) { animation-delay: 0.5s; }
+        .works-grid .content-item:nth-child(6) { animation-delay: 0.6s; }
         @keyframes slideUpFadeIn { 
             from { opacity: 0; transform: translateY(30px); } 
             to { opacity: 1; transform: translateY(0); } 
@@ -65,14 +65,9 @@
         .menu-item-mythoughts:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; }
         .menu-item-sayhello:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
         .menu-item:hover .menu-text { color: white; }
-        .experience-item { cursor: pointer; }
-        .experience-item:hover { background-color: #2D8FFF; box-shadow: 5px 5px 0px #194F8D; }
-        .experience-item:hover .exp-title, .experience-item:hover .exp-date { color: white; }
         .experience-image { width: 100%; height: 144px; object-fit: cover; }
         @media (max-width: 768px) { 
-            .works-container { grid-template-columns: 1fr; gap: 1rem; } 
-            .works-column { width: 100%; max-width: none; } 
-            .experience-item { width: 100%; } 
+            .works-grid { grid-template-columns: 1fr; } 
         }
         .skeleton { 
             background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%); 
@@ -86,6 +81,19 @@
             from { background-position: 200% 0; } 
             to { background-position: -200% 0; } 
         }
+        .experience-item { 
+            padding: 1rem;
+            background-color: #f5f5f5;
+        }
+        @media (prefers-color-scheme: dark) { 
+            .experience-item { background-color: #1a1a1a; }
+        }
+        .design-button { background-color: #2D8FFF; }
+        .design-button:hover { background-color: #2D8FFF; box-shadow: 5px 5px 0px #194F8D; }
+        .design-button:hover .button-text { color: white; }
+        .live-button { background-color: #27BE4A; }
+        .live-button:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
+        .live-button:hover .button-text { color: white; }
     </style>
 </head>
 <body class="bg-white dark:bg-black min-h-screen flex flex-col">
@@ -97,26 +105,23 @@
             </div>
         </header>
         <main class="w-full flex-grow flex flex-col justify-start items-center py-6">
-            <div class="w-full max-w-[800px] works-container grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div id="works-container-left" class="works-column flex flex-col justify-center items-center gap-4">
-                    <div class="skeleton w-full h-52 p-2 rounded-2xl flex flex-col justify-start items-start gap-2">
-                        <div class="skeleton-image w-full"></div>
-                        <div class="self-stretch inline-flex justify-between items-end w-full">
-                            <div class="inline-flex flex-col justify-start items-start gap-2">
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-subtext"></div>
-                            </div>
+            <div id="works-grid" class="works-grid w-full max-w-[800px] grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Skeleton loaders (will be replaced by actual content) -->
+                <div class="skeleton w-full p-2 rounded-full flex flex-col justify-start items-start gap-2">
+                    <div class="skeleton-image w-full"></div>
+                    <div class="self-stretch inline-flex justify-between items-end w-full">
+                        <div class="inline-flex flex-col justify-start items-start gap-2">
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-subtext"></div>
                         </div>
                     </div>
                 </div>
-                <div id="works-container-right" class="works-column flex flex-col justify-center items-center gap-4">
-                    <div class="skeleton w-full h-52 p-2 rounded-2xl flex flex-col justify-start items-start gap-2">
-                        <div class="skeleton-image w-full"></div>
-                        <div class="self-stretch inline-flex justify-between items-end w-full">
-                            <div class="inline-flex flex-col justify-start items-start gap-2">
-                                <div class="skeleton-text"></div>
-                                <div class="skeleton-subtext"></div>
-                            </div>
+                <div class="skeleton w-full p-2 rounded-full flex flex-col justify-start items-start gap-2">
+                    <div class="skeleton-image w-full"></div>
+                    <div class="self-stretch inline-flex justify-between items-end w-full">
+                        <div class="inline-flex flex-col justify-start items-start gap-2">
+                            <div class="skeleton-text"></div>
+                            <div class="skeleton-subtext"></div>
                         </div>
                     </div>
                 </div>
@@ -144,45 +149,48 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const menuOverlay = document.getElementById('menuOverlay');
             const toggleMenu = (show) => menuOverlay.style.display = show ? 'flex' : 'none';
             
             document.getElementById('menuButton').addEventListener('click', () => toggleMenu(true));
             document.getElementById('closeMenuButton').addEventListener('click', () => toggleMenu(false));
 
-            const createCard = (shot) => {
+            const createCard = (work) => {
                 const card = document.createElement('div');
-                card.className = 'content-item experience-item transition-all w-full h-52 p-2 bg-neutral-100 dark:bg-[#1a1a1a] rounded-2xl flex flex-col justify-start items-start gap-2';
+                card.className = 'content-item experience-item w-full flex flex-col justify-between items-start gap-3 rounded-2xl';
                 card.innerHTML = `
-                    <img class="experience-image rounded-xl" src="${shot.images.normal || shot.images.teaser || 'https://placehold.co/345x144'}" alt="${shot.title}" onerror="this.src='https://placehold.co/345x144'">
-                    <div class="self-stretch inline-flex justify-between items-end w-full">
-                        <div class="inline-flex flex-col justify-start items-start gap-2">
-                            <div class="exp-title text-black dark:text-white text-xs font-medium font-inter">${shot.title}</div>
-                            <div class="exp-date text-black/50 dark:text-white/50 text-xs font-medium font-inter">Dribbble</div>
+                    <img class="experience-image rounded-xl" src="${work.thumbnail}" alt="${work.title}" onerror="this.src='https://placehold.co/345x144'">
+                    <div class="w-full flex flex-col gap-2">
+                        <div class="flex flex-col gap-1">
+                            <div class="exp-title text-black dark:text-white text-sm font-medium font-inter">${work.title}</div>
+                            ${work.description ? `<div class="text-black/70 dark:text-white/70 text-xs font-inter min-h-[2.5rem]">${work.description}</div>` : '<div class="min-h-[2.5rem]"></div>'}
+                            <div class="exp-date text-black/50 dark:text-white/50 text-xs font-medium font-inter">${work.date}</div>
                         </div>
-                    </div>`;
-                card.addEventListener('click', () => window.open(shot.html_url, '_blank'));
+                        <div class="flex gap-2">
+                            <a href="${work.designLink}" target="_blank" class="design-button transition-all w-[120px] h-10 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                                <div class="button-text text-white text-lg font-tanker">View Design</div>
+                            </a>
+                            ${work.liveLink ? `
+                                <a href="${work.liveLink}" target="_blank" class="live-button transition-all w-[120px] h-10 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
+                                    <div class="button-text text-white text-lg font-tanker">Live Preview</div>
+                                </a>` : ''}
+                        </div>
+                    </div>
+                `;
                 return card;
             };
 
-            try {
-                const accessToken = '0520aa973bb5085a8fc146e9605863c66b9750905a3e9bdf4f427c81a62c5db2';
-                const response = await fetch(`https://api.dribbble.com/v2/user/shots?access_token=${accessToken}`);
-                const shots = await response.json();
-                const left = document.getElementById('works-container-left');
-                const right = document.getElementById('works-container-right');
-                left.innerHTML = '';
-                right.innerHTML = '';
-                shots.forEach((shot, i) => {
-                    const card = createCard(shot);
-                    (window.innerWidth >= 768 && i % 2 === 0) ? left.appendChild(card) : right.appendChild(card);
-                });
-            } catch (error) {
-                document.getElementById('works-container-left').innerHTML = '<div class="text-black dark:text-white text-sm font-medium font-inter">Failed to load works. Please try again later.</div>';
-                document.getElementById('works-container-right').innerHTML = '';
-            }
+            const worksGrid = document.getElementById('works-grid');
+            worksGrid.innerHTML = ''; // Clear skeleton loaders
+
+            // Add all design works to the grid
+            designWorks.forEach(work => {
+                const card = createCard(work);
+                worksGrid.appendChild(card);
+            });
         });
     </script>
 </body>

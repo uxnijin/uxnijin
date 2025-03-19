@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the upcoming creations by Nijin, a Product Designer.">
+    <meta name="description" content="Explore apps and websites created by Nijin, a Product Designer.">
     <!-- Open Graph Tags -->
     <meta property="og:title" content="uxnijin - My Creation">
-    <meta property="og:description" content="Stay tuned for exciting creations coming soon from Nijin, a passionate Product Designer.">
+    <meta property="og:description" content="Check out apps and websites built from scratch by Nijin, a Product Designer.">
     <meta property="og:image" content="https://uxnijin.com/assets/creation.png">
     <meta property="og:url" content="https://uxnijin.com/mycreation.html">
     <meta property="og:type" content="website">
@@ -14,7 +14,7 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="uxnijin - My Creation">
-    <meta name="twitter:description" content="Stay tuned for exciting creations coming soon from Nijin, a passionate Product Designer.">
+    <meta name="twitter:description" content="Check out apps and websites built from scratch by Nijin, a Product Designer.">
     <meta name="twitter:image" content="https://uxnijin.com/assets/creation.png">
     <meta name="twitter:site" content="@uxnijin">
     <title>My Creation - uxnijin</title>
@@ -38,20 +38,22 @@
             justify-content: space-between; 
             align-items: center; 
         }
-        .back-button { background-color: #FF3F4C; }
-        .back-button:hover { box-shadow: 5px 5px 0px #97242C; }
-        @media (prefers-color-scheme: dark) { .menu-overlay { background-color: black; } }
+        @media (prefers-color-scheme: dark) { 
+            .menu-overlay { background-color: black; }
+            .app-name { color: #fff; }
+        }
         .content-item { 
             opacity: 0; 
-            transform: translateY(30px); 
-            animation: slideUpFadeIn 0.6s ease-out forwards; 
+            transform: scale(0.8); 
+            animation: popIn 0.5s ease-out forwards; 
         }
-        .content-item:nth-child(1) { animation-delay: 0.1s; }
-        .content-item:nth-child(2) { animation-delay: 0.2s; }
-        .content-item:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes slideUpFadeIn { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        .app-list .content-item:nth-child(1) { animation-delay: 0.1s; }
+        .app-list .content-item:nth-child(2) { animation-delay: 0.2s; }
+        .app-list .content-item:nth-child(3) { animation-delay: 0.3s; }
+        .app-list .content-item:nth-child(4) { animation-delay: 0.4s; }
+        @keyframes popIn { 
+            from { opacity: 0; transform: scale(0.8); } 
+            to { opacity: 1; transform: scale(1); } 
         }
         .menu-item-home:hover { background-color: #938EFF; box-shadow: 5px 5px 0px #5D59B2; }
         .menu-item-mycreation:hover { background-color: #FF3F4C; box-shadow: 5px 5px 0px #97242C; }
@@ -60,26 +62,93 @@
         .menu-item-mythoughts:hover { background-color: #FF9D14; box-shadow: 5px 5px 0px #A15E00; }
         .menu-item-sayhello:hover { background-color: #27BE4A; box-shadow: 5px 5px 0px #006D19; }
         .menu-item:hover .menu-text { color: white; }
+        .app-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 8px; 
+            cursor: pointer; 
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smoother transition */
+        }
+
+        .app-list { 
+            display: flex; 
+            gap: 24px; 
+            justify-content: center; 
+            padding: 16px; 
+            overflow-x: auto; 
+            flex-wrap: nowrap; 
+            transition: opacity 0.3s ease-out; /* Added transition for the container */
+        }
+
+        /* Hover effect for the container */
+        .app-list:hover .app-item { 
+            opacity: 0.3; /* Slightly higher than 0.25 for better visibility */
+        }
+
+        /* Individual item hover effect */
+        .app-list .app-item:hover { 
+            opacity: 1; 
+            transform: rotate(5deg) scale(1.05); /* More subtle tilt with slight scale */
+        }
+
+        .app-icon { 
+            width: 80px; 
+            height: 80px; 
+            border-radius: 16px; 
+            outline: 4px solid #F1F1F1; 
+            object-fit: cover; 
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Added transform transition */
+        }
+
+        /* Add specific hover for the icon itself */
+        .app-item:hover .app-icon {
+            transform: rotate(5deg); /* Matches the container tilt */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+        }
+
+        @media (max-width: 768px) { 
+            .app-icon { 
+                width: 60px; 
+                height: 60px; 
+            } 
+            .app-name { 
+                font-size: 12px; 
+            } 
+            .app-list { 
+                gap: 16px; 
+            }
+            .app-list .app-item:hover { 
+                transform: rotate(3deg) scale(1.05); /* Even subtler on mobile */
+            }
+        }
+
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            .app-icon {
+                outline: 4px solid #333;
+            }
+            .app-name {
+                color: #fff;
+            }
+            .app-item:hover .app-icon {
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* White shadow in dark mode */
+            }
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-black min-h-screen flex flex-col">
-    <header class="w-full px-4 md:px-9 pt-4 md:pt-9">
-        <div class="flex justify-between items-center h-12">
+    <div class="w-full px-4 md:px-9 py-4 md:py-9 flex flex-col justify-between items-center">
+        <header class="w-full flex justify-between items-center h-12">
             <div class="text-red-500 text-2xl font-tanker">MY CREATION</div>
             <div id="menuButton" class="menu-button transition-all w-[72px] h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
                 <div class="menu-text text-black dark:text-white text-2xl font-tanker">Menu</div>
             </div>
-        </div>
-    </header>
-    <main class="flex-grow flex justify-center items-center px-4 md:px-9 py-4 md:py-9">
-        <div class="w-full max-w-[800px] flex flex-col justify-center items-center gap-4 md:gap-2.5">
-            <div class="content-item w-full max-w-[370px] md:max-w-[800px] text-center text-black dark:text-white text-2xl font-tanker">My Creation - Coming Soon</div>
-            <div class="content-item w-full max-w-[370px] md:max-w-[800px] text-center text-black dark:text-white text-sm font-medium font-inter">This page is under construction. Stay tuned to see my creations come to life!</div>
-            <a href="home.html" class="content-item back-button transition-all w-full h-12 px-3 py-2 rounded-2xl flex justify-center items-center cursor-pointer">
-                <div class="text-white text-2xl font-tanker">Back to Home</div>
-            </a>
-        </div>
-    </main>
+        </header>
+        <main class="w-full flex-grow flex flex-col justify-center items-center py-72">
+            <div id="app-list" class="app-list w-full max-w-[800px]"></div>
+        </main>
+    </div>
     <div id="menuOverlay" class="menu-overlay">
         <div class="w-full px-4 md:px-9 pt-4 md:pt-9">
             <div class="flex justify-between items-center h-12">
@@ -101,6 +170,7 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuOverlay = document.getElementById('menuOverlay');
@@ -108,6 +178,29 @@
             
             document.getElementById('menuButton').addEventListener('click', () => toggleMenu(true));
             document.getElementById('closeMenuButton').addEventListener('click', () => toggleMenu(false));
+
+            // Dynamically populate creations from data.js
+            const appList = document.getElementById('app-list');
+            creations.forEach(creation => {
+                const appItem = document.createElement('a');
+                appItem.href = creation.link;
+                appItem.target = '_blank';
+                appItem.className = 'content-item app-item';
+                
+                const img = document.createElement('img');
+                img.className = 'app-icon';
+                img.src = creation.icon;
+                img.alt = creation.title;
+                img.onerror = () => img.src = 'https://placehold.co/80x80';
+                
+                const name = document.createElement('div');
+                name.className = 'app-name';
+                name.textContent = creation.title;
+
+                appItem.appendChild(img);
+                appItem.appendChild(name);
+                appList.appendChild(appItem);
+            });
         });
     </script>
 </body>
