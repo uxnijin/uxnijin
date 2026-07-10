@@ -1,69 +1,49 @@
-# Hey, I'm uxnijin 👋
+# uxnijin
 
-Welcome to my GitHub profile! I'm a full-stack developer passionate about building useful tools and applications. I work with modern web technologies and love creating intuitive user experiences.
+I'm a product designer exploring the intersections of design and development. While design is my primary focus, I use this space to experiment with code, build tools, and create things that solve real problems.
 
-## 🛠️ Tech Stack
+## What I Do
 
-**Languages & Frameworks:**
-- TypeScript
-- JavaScript
-- HTML/CSS
-- Python
+My background is in product design, but I've always been curious about how things work. I spend time building prototypes, creating utilities, and experimenting with different technologies to understand how design decisions translate into code.
 
-**Specializations:**
+## Areas of Interest
+
+**Design-focused work:**
+- Design systems and tools
+- Figma plugin development
+- Design documentation
+- Color theory and accessibility
+- Typography systems
+
+**Building and experimenting:**
 - Full-stack web development
-- Desktop applications (Electron)
-- Chrome extensions
-- Figma plugins
-- Web utilities & tools
+- Browser extensions and automation
+- Utility tools and productivity apps
+- Desktop applications
+- Exploring new frameworks and technologies
 
-## 🚀 Featured Projects
+## Recent Work
 
-### Figma Plugins
-A collection of powerful design utilities for Figma:
-- **[Contrast Checker](https://github.com/uxnijin/contrastchecker-figma-plugin)** - Check color contrast accessibility
-- **[Tints and Shades](https://github.com/uxnijin/tintsandshades-figma-plugin)** - Generate color palettes
-- **[Typography Plugin](https://github.com/uxnijin/typography-figma-plugin)** - Typography management
-- **[Background Remover](https://github.com/uxnijin/background-remover-figma-plugin)** - Remove image backgrounds
-- **[CMYK Export](https://github.com/uxnijin/cmyk-export-figma-plugin)** - Export to CMYK format
+I've been working on several projects that blend design and development:
 
-### Productivity & Tracking Tools
-- **[Google Tasks Desktop](https://github.com/uxnijin/Google-Tasks-Desktop)** - Google Tasks with sign in and offline support (TypeScript)
-- **[Tasks Chrome Extension](https://github.com/uxnijin/tasks-chrome-extension)** - Quick access to your tasks
-- **[Habit Tracker](https://github.com/uxnijin/habit-tracker)** - Track your daily habits
-- **[Calorie Tracker](https://github.com/uxnijin/calorietracker)** - Monitor your nutrition (TypeScript)
+- **Figma Plugins** - Built a collection of utility plugins including contrast checkers, color palette generators, and export tools
+- **Productivity Tools** - Created desktop applications and extensions for task management with offline support
+- **Network Utilities** - Developed tools for DNS checking, IP detection, and performance analysis
+- **Trackers** - Built applications for habit tracking and nutrition monitoring
 
-### Utility & Network Tools
-- **[DNS Checker](https://github.com/uxnijin/dnschecker)** - Check DNS records
-- **[IP Checker](https://github.com/uxnijin/ipchecker)** - Check your IP address
-- **[Speed Test](https://github.com/uxnijin/speedtest)** - Test your internet speed
-- **[Site Speed Check](https://github.com/uxnijin/sitespeedcheck)** - Analyze website performance
-- **[Expiring Domain](https://github.com/uxnijin/expiring-domain)** - Monitor domain expiration
+## Skills
 
-### Other Projects
-- **[Parcel Tracking](https://github.com/uxnijin/parcel-tracking)** - Track your shipments
-- **[Table Generator](https://github.com/uxnijin/tablegenerator)** - Create HTML tables easily
-- **[Design School Malayalam](https://github.com/uxnijin/designschoolmalayalam)** - Design education resource
-- **[Aazan](https://github.com/uxnijin/aazan)** - Prayer times application
-- **[Magic Portfolio](https://github.com/uxnijin/magic-portfolio)** - Portfolio showcase (TypeScript)
+- Product design and UX
+- TypeScript, JavaScript, HTML/CSS
+- Figma plugin development
+- Web application development
+- Python for scripting and automation
+- Prototyping and experimentation
 
-## 📚 Learning
+## Philosophy
 
-- Google IT Automation with Python (Coursera) - [View Project](https://github.com/uxnijin/Crash-Course-on-python)
+I believe great products come from understanding both design and implementation. By working across these domains, I can better communicate with developers and make more informed design decisions. Every project here is an experiment in learning something new or solving a problem I noticed.
 
-## 💡 What I Do
+## Explore
 
-I enjoy:
-- Building practical web applications and tools
-- Creating browser extensions and plugins
-- Designing intuitive user interfaces
-- Open source contribution
-- Learning new technologies
-
-## 📊 GitHub Stats
-
-Check out my [repositories](https://github.com/uxnijin?tab=repositories) to explore more of my work!
-
----
-
-**Let's connect!** Feel free to explore my projects and reach out if you'd like to collaborate. 🚀
+Check out my [repositories](https://github.com/uxnijin?tab=repositories) to see what I've been working on. Feel free to reach out if you want to collaborate or discuss design and development.
